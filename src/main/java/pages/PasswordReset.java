@@ -13,11 +13,18 @@ public class PasswordReset {
     public PasswordReset(WebDriver driver) {
         this.driver=driver;
     }
-    public String ResetPassoword(String username){
+    public String resetPassoword(String username){
         WebDriverWait wait= new WebDriverWait(driver, Duration.ofSeconds(10));
        WebElement input= wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".woocommerce-Input.woocommerce-Input--text.input-text")));
        input.sendKeys(username);
        driver.findElement(By.cssSelector(".woocommerce-Button.button")).click();
       return driver.findElement(By.cssSelector(".woocommerce-message")).getText();
+    }
+    public String unSuccessfulResetPassoword(String username){
+        WebDriverWait wait= new WebDriverWait(driver, Duration.ofSeconds(10));
+        WebElement input= wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".woocommerce-Input.woocommerce-Input--text.input-text")));
+        input.sendKeys(username);
+        driver.findElement(By.cssSelector(".woocommerce-Button.button")).click();
+        return driver.findElement(By.cssSelector(" div.woocommerce li")).getText();
     }
 }

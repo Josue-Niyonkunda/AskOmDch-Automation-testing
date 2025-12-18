@@ -24,13 +24,8 @@ public class HomePage {
         driver.findElement(By.cssSelector("[data-product_id='1215']")).click();
         driver.findElement(By.cssSelector("[data-product_id='1209']")).click();
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-
-        WebElement viewCart =
-                wait.until(ExpectedConditions.elementToBeClickable(
-                        By.xpath("//a[contains(@class,'added_to_cart')]")
-                ));
-        viewCart.click();
-
+                wait.until(ExpectedConditions.elementToBeClickable(By
+                    .xpath("//a[contains(@class,'added_to_cart')]"))).click();
        return new CartPage(driver);
     }
     public StorePage clickStore(){
