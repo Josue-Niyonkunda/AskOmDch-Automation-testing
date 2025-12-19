@@ -9,7 +9,6 @@ public class RegisterWithinvalidEmailTest extends BaseTest {
     public void testRegisterWithinvalidEmail(){
         var details=homePage.clickAccount();
         details.userRegistrationDetails("josue","","niyonkunda20");
-        details.clickRegisterButton();
-        Assert.assertEquals(details.getTextErrorForRegister(),"Error: Please provide a valid email address.","not match");
+        Assert.assertEquals(details.clickRegisterButton(),"Error: Please provide a valid email address.","not match");
     }
 }

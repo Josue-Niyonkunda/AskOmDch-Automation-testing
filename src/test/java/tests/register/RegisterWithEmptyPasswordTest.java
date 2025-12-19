@@ -10,6 +10,6 @@ public class RegisterWithEmptyPasswordTest extends BaseTest {
         var details=homePage.clickAccount();
         details.userRegistrationDetails("josue2","josue2@gmail.com","");
         details.clickRegisterButton();
-        Assert.assertEquals(details.getTextErrorForRegister(),"Error: Please enter an account password.","not match");
+        Assert.assertEquals(details.clickRegisterButton(),"Error: Please enter an account password.","not match");
     }
 }

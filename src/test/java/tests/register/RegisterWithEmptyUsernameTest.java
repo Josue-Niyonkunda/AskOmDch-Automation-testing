@@ -9,7 +9,6 @@ public class RegisterWithEmptyUsernameTest extends BaseTest {
     public void testRegisterWithEmptyUsername(){
         var details=homePage.clickAccount();
         details.userRegistrationDetails("","josue2@gmail.com","niyonkunda20");
-        details.clickRegisterButton();
-        Assert.assertEquals(details.getTextErrorForRegister(),"Error: Please enter a valid account username.","not match");
+        Assert.assertEquals(  details.clickRegisterButton(),"Error: Please enter a valid account username.","not match");
     }
 }

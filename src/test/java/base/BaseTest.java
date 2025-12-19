@@ -18,6 +18,6 @@ public class BaseTest {
     }
     @AfterMethod
     public void stop(){
-     driver.quit();
+     //driver.quit();
     }
 }

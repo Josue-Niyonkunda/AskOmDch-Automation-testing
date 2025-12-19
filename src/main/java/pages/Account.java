@@ -22,20 +22,19 @@ public class Account {
         driver.findElement(passwordField).sendKeys(password);
 
     }
-    public void clickLoginButton(){
+    public String clickLoginButton(){
         driver.findElement(loginButton).click();
-    }
-    public String getText(){
         WebDriverWait wait= new WebDriverWait(driver,Duration.ofSeconds(5));
-        wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.cssSelector("#post-1235 > div > div.wp-block-group.alignfull > div > div.woocommerce > div > p:nth-child(2)"))));
-        WebElement text=driver.findElement(By.cssSelector("#post-1235 > div > div.wp-block-group.alignfull > div > div.woocommerce > div > p:nth-child(2)"));
+        wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.cssSelector("p:nth-child(2)"))));
+        WebElement text=driver.findElement(By.cssSelector("p:nth-child(2)"));
         return text.getText();
     }
+
     public String getErrorText(){
         WebDriverWait wait= new WebDriverWait(driver,Duration.ofSeconds(5));
-        wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.cssSelector("#post-1235 > div > div.wp-block-group.alignfull > div > div.woocommerce > div.woocommerce-notices-wrapper > ul > li"))));
+        wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.cssSelector(".woocommerce-error"))));
 
-        WebElement text=driver.findElement(By.cssSelector("#post-1235 > div > div.wp-block-group.alignfull > div > div.woocommerce > div.woocommerce-notices-wrapper > ul > li"));
+        WebElement text=driver.findElement(By.cssSelector(".woocommerce-error"));
         return text.getText();
     }
     public void userRegistrationDetails (String username1,String email1,String password1){
@@ -44,14 +43,12 @@ public class Account {
          driver.findElement(emailField).sendKeys(email1);
          driver.findElement(regPasswordField).sendKeys(password1);
     }
-    public void clickRegisterButton(){
+    public String clickRegisterButton(){
         driver.findElement(registerButton).click();
-    }
-    public String getTextErrorForRegister(){
-         WebDriverWait wait= new WebDriverWait(driver,Duration.ofSeconds(10));
-         wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.cssSelector("#post-1235 > div > div.wp-block-group.alignfull > div > div.woocommerce > div.woocommerce-notices-wrapper > ul > li"))));
-       WebElement errorMessage=driver.findElement(By.cssSelector("#post-1235 > div > div.wp-block-group.alignfull > div > div.woocommerce > div.woocommerce-notices-wrapper > ul > li"));
-       return errorMessage.getText();
+        WebDriverWait wait= new WebDriverWait(driver,Duration.ofSeconds(10));
+        wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.cssSelector(".woocommerce-error"))));
+        WebElement errorMessage=driver.findElement(By.cssSelector(".woocommerce-error"));
+        return errorMessage.getText();
     }
     public PasswordReset clickOnPasswordReset(){
          driver.findElement(By.linkText("Lost your password?")).click();

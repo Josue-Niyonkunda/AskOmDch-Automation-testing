@@ -8,7 +8,7 @@ public class SuccessLoginTest extends BaseTest {
     public void testLogin(){
         var contact=homePage.clickAccount();
         contact.userCredentials("josueniyonkunda","niyonkunda20");
-        contact.clickLoginButton();
-        Assert.assertEquals(contact.getText(),"Hello josueniyonkunda (not josueniyonkunda? Log out)","Not match");
+
+        Assert.assertEquals(contact.clickLoginButton(),"Hello josueniyonkunda (not josueniyonkunda? Log out)","Not match");
     }
 }

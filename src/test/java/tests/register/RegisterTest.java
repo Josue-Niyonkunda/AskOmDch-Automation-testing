@@ -9,7 +9,7 @@ public class RegisterTest extends BaseTest {
     public void testRegister(){
         var details=homePage.clickAccount();
         details.userRegistrationDetails("josue","josue@gmail.com","niyonkunda20");
-        details.clickRegisterButton();
-        Assert.assertEquals(details.getTextErrorForRegister(),"Error: An account is already registered with your email address. Please log in.","not match");
+        ;
+        Assert.assertEquals(details.clickRegisterButton(),"Error: An account is already registered with your email address. Please log in.","not match");
     }
 }
