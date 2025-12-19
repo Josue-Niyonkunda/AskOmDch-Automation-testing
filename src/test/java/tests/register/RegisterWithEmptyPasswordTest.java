@@ -1,5 +1,4 @@
 package tests.register;
-
 import base.BaseTest;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -9,7 +8,7 @@ public class RegisterWithEmptyPasswordTest extends BaseTest {
     //checking reregistration functionality with empty password field
     public void testRegisterWithEmptyPassword(){
         var details=homePage.clickAccount();
-        details.userRegistrationDetails("josue","josue2@gmail.com","");
+        details.userRegistrationDetails("josue2","josue2@gmail.com","");
         details.clickRegisterButton();
         Assert.assertEquals(details.getTextErrorForRegister(),"Error: Please enter an account password.","not match");
     }

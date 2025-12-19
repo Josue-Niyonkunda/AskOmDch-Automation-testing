@@ -4,11 +4,9 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
-
 import javax.swing.*;
 import java.time.Duration;
 
@@ -33,14 +31,32 @@ public class StorePage {
         WebElement text1=wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("h1.woocommerce-products-header__title.page-title")));
         return text1.getText();
     }
-    public String filterByPrice(){
-        Actions actions= new Actions(driver);
-      WebElement slider= driver.findElement(By.cssSelector(".ui-slider-handle"));
-      actions.dragAndDropBy(slider,100,0).perform();
-      driver.findElement(By.cssSelector("button.button[type='submit']")).click();
-      var price=driver.findElement(By.cssSelector(".price span bdi")).getText();
-                    return price;
+
+    private By formSlider= By.cssSelector(".price_slider_wrapper");
+    private By filterButton=By.cssSelector("button.button[type='submit']");
+    public List<Double> filterByPrice(int minV, int maxV) {
+        WebElement priceSlider = driver.findElement(formSlider);
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        // Set min and max price using JS
+        js.executeScript("arguments[0].scrollIntoView({block:'center'});" +
+                        "document.getElementById('min_price').value=arguments[1];" +
+                        "document.getElementById('max_price').value=arguments[2];",priceSlider, minV, maxV);
+
+        driver.findElement(filterButton).click();
+
+        // Get all product prices after filter
+        List<WebElement> prices = driver.findElements(By.cssSelector(".price"));
+        List<Double> priceValues = new ArrayList<>();
+
+        for (WebElement price : prices) {
+            String text = price.getText();
+            // Remove symbols, split by space, take first number
+            double value = Double.parseDouble(text.replaceAll("[^0-9. ]", "").split("\\s+")[0]);
+            priceValues.add(value);
+        }
+        return priceValues;
     }
+
     public void sorting(String option){
         var optionlocator=driver.findElement(By.cssSelector("select.orderby"));
         optionlocator.click();
