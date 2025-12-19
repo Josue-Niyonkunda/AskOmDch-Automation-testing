@@ -56,14 +56,10 @@ public class StorePage {
         }
         return priceValues;
     }
-
     public void sorting(String option){
         var optionlocator=driver.findElement(By.cssSelector("select.orderby"));
         optionlocator.click();
         Select select= new Select(optionlocator);
         select.selectByVisibleText(option);
     }
-
-
-
 }

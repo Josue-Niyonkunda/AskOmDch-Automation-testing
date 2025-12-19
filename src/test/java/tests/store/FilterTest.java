@@ -1,9 +1,7 @@
 package tests.store;
-
 import base.BaseTest;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-
 import java.util.List;
 
 public class FilterTest extends BaseTest {

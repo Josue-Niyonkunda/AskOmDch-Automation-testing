@@ -1,18 +1,15 @@
 package pages;
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-
 import java.time.Duration;
 public class Account {
    private WebDriver driver;
     private By usernameField=By.id("username");
     private By passwordField=By.id("password");
     private By loginButton=By.name("login");
-
     private By regUsernameField=By.id("reg_username");
     private By emailField=By.name("email");
     private  By regPasswordField=By.id("reg_password");
@@ -31,7 +28,6 @@ public class Account {
     public String getText(){
         WebDriverWait wait= new WebDriverWait(driver,Duration.ofSeconds(5));
         wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.cssSelector("#post-1235 > div > div.wp-block-group.alignfull > div > div.woocommerce > div > p:nth-child(2)"))));
-
         WebElement text=driver.findElement(By.cssSelector("#post-1235 > div > div.wp-block-group.alignfull > div > div.woocommerce > div > p:nth-child(2)"));
         return text.getText();
     }

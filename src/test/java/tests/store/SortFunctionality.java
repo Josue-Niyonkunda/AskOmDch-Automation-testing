@@ -1,5 +1,4 @@
 package tests.store;
-
 import base.BaseTest;
 import org.testng.annotations.Test;
 
